@@ -1,0 +1,16 @@
+.idea/*
+.nyc_output
+build
+node_modules
+test
+src/**.js
+data/*
+!data/.gitkeep
+kpie2edata
+updatekpidata.sh
+coverage
+*.log
+package-lock.json
+.DS_Store
+config.json
+!example/config.json
