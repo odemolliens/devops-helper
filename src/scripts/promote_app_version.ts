@@ -16,7 +16,6 @@ export default async function promoteAppVersion({
   readonly appVersion: string;
   readonly dryRun: boolean;
 }) {
-  dryRun = true;
   logger.info(`Git Reset Hard`.green);
   !dryRun && logger.debug(await git.reset(ResetMode.HARD));
 
