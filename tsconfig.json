@@ -2,7 +2,7 @@
   "compilerOptions": {
     "incremental": true,
     "target": "es5",
-    "outDir": "build/main",
+    "outDir": "build",
     "rootDir": "src",
     "moduleResolution": "node",
     "module": "commonjs",

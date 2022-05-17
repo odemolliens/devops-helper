@@ -1,9 +1,10 @@
+#!/usr/bin/env node
+
 import { simpleLogger } from 'adash-ts-helper';
 import cac from 'cac';
 import simpleGit, { SimpleGit } from 'simple-git';
-import packageJson from './package.json';
-import { extractVersions } from './src/lib/utils';
-import promoteApp from './src/scripts/promote_app';
+import { extractVersions } from './lib/utils';
+import promoteApp from './scripts/promote_app';
 
 const cli = cac();
 const logger = simpleLogger();
@@ -51,5 +52,5 @@ cli
 cli.command('').action(cli.outputHelp);
 
 cli.help();
-cli.version(packageJson.version);
+cli.version("0.0.1");
 cli.parse();

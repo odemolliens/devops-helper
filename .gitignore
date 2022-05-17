@@ -1,10 +1,6 @@
-.idea/*
-.nyc_output
-build
-node_modules
-test
-src/**.js
-coverage
+/build
+/node_modules
 *.log
 package-lock.json
 .DS_Store
+tsconfig.tsbuildinfo

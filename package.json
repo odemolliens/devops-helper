@@ -1,14 +1,19 @@
 {
-  "name": "ci-steps-package",
+  "name": "devops-helper",
   "version": "0.0.1",
   "description": "TBD",
   "repository": "https://github.com/imranMnts/devops-helper",
   "license": "MIT",
   "keywords": [],
+  "main": "./build/cli.js",
+  "bin": {
+    "devops-helper": "./build/cli.js"
+  },
   "scripts": {
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"**/*.ts\" --write",
-    "fix:lint": "eslint src --ext .ts --fix"
+    "fix:lint": "eslint src --ext .ts --fix",
+    "build": "tsc -p ."
   },
   "engines": {
     "node": ">=10"
