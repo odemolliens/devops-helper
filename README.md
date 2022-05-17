@@ -12,7 +12,12 @@ For a list of available scripts and their usage run the command:
    \*BRANCHES parameters must be a valid JSON string array
 
    Example:
+   - Manual branch name:
    `npx devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]" 9.99.9`
+   - Auto detect version:
+   `npx devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]"`
+   - Without any versioned branches:
+   `npx devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]" --noVersionedBranch`
 
 ## Add a new script
 
