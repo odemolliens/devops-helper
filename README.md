@@ -12,7 +12,7 @@ For a list of available scripts and their usage run the command:
    \*BRANCHES parameters must be a valid JSON string array
 
    Example:
-   - Auto detect version based on the branch name:
+   - Auto detected version from the branch name:
 
    Your current branch is: `branch_1/1.2.3`
 
@@ -33,7 +33,7 @@ For a list of available scripts and their usage run the command:
    It will merge `branch_1` into `branch_2`, and `branch_2` into `branch_3`
 
 
-⚠️ ⚠️ Don't forget to update `ACCESS_TOKEN` and `REPOSITORY`
+⚠️ ⚠️ Don't forget to set `ACCESS_TOKEN` and `REPOSITORY`
 
 The `ACCESS_TOKEN` can be created from [there](https://gitlab.com/-/profile/personal_access_tokens), just the `write_repository` is required
 ## Add a new script
