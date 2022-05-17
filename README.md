@@ -13,11 +13,11 @@ For a list of available scripts and their usage run the command:
 
    Example:
    - Manual branch name:
-   `npx devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]" 9.99.9`
+   `npx --yes devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]" 9.99.9`
    - Auto detect version:
-   `npx devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]"`
+   `npx --yes devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]"`
    - Without any versioned branches:
-   `npx devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]" --noVersionedBranch`
+   `npx --yes devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]" --noVersionedBranch`
 
 ## Add a new script
 
