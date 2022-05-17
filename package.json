@@ -12,7 +12,7 @@
   "scripts": {
     "prepublish": "yarn run build",
     "fix": "run-s fix:*",
-    "fix:prettier": "prettier \"**/*.ts\" --write",
+    "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:lint": "eslint src --ext .ts --fix",
     "build": "tsc -p ."
   },

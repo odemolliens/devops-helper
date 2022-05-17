@@ -56,5 +56,4 @@ cli
 cli.command('').action(cli.outputHelp);
 
 cli.help();
-cli.version('0.0.1');
 cli.parse();
