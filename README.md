@@ -18,11 +18,13 @@ To setup the project run the following commands
 For a list of available scripts and their usage run the command:
 `npx ts-node devops-helper --help`
 
-1. `promote-app-version [REMOTE] [BRANCHES] <APP_VERSION> --dryRun`
+1. `promote-app [REMOTE] [BRANCHES] <APP_VERSION> --dryRun`
 
-   Merge all the changes of the first branch to the other branches (from left to right) for a specific app version
+   Merge all the changes of the first branch to the other branches (from left to right) for a specific app version, for me information about app version check [APPVERSION.md]().
 
-   \*The BRANCHES parameters must be a valid JSON string array
+   If you don't follow the versioned workflow, you can provide the `--noVersionedBranch` option to skip the version checks.
+
+   \*BRANCHES parameters must be a valid JSON string array
 
    Example:
-   `npx ts-node devops-helper promote-app-version repository.git "[\"develop\", \"uat\", \"lut\"]" 9.99.9 --dryRun`
+   `npx ts-node devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]" 9.99.9`

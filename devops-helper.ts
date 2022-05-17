@@ -3,17 +3,17 @@ import cac from 'cac';
 import simpleGit, { SimpleGit } from 'simple-git';
 import packageJson from './package.json';
 import { extractVersions } from './src/lib/utils';
-import promoteAppVersion from './src/scripts/promote_app_version';
+import promoteApp from './src/scripts/promote_app';
 
 const cli = cac();
 const logger = simpleLogger();
 
 cli
   .command(
-    'promote-app-version [REMOTE] [BRANCHES] <APP_VERSION>',
-    'Promote app version description'
+    'promote-app [REMOTE] [BRANCHES] <APP_VERSION>',
   )
-  .option('--dryRun [dryRun]', 'Just run the script without doing nothing')
+  .option('--dryRun [dryRun]', 'Just run the script without doing nothing', { default: false })
+  .option('--noVersionedBranch [noVersionedBranch]', 'Skip version checks', { default: false })
   .action(
     async (
       remote: string,
@@ -25,13 +25,20 @@ cli
         const git: SimpleGit = simpleGit({});
         const currentBranch = (await git.branch()).current;
         const parsedBranches = JSON.parse(branches);
-        appVersion = appVersion || extractVersions(currentBranch)[0];
 
-        await promoteAppVersion({
+        if (!options.noVersionedBranch) {
+          appVersion = appVersion || extractVersions(currentBranch)[0];
+
+          if (!appVersion) {
+            throw Error("Cannot detect the app version from the branch name. Please provide the app version, rename the branch to follow the versioned workflow or use the --noVersionedBranch option.")
+          }
+        }
+
+        await promoteApp({
           remote,
-          appVersion,
+          appVersion: options.noVersionedBranch ? undefined : appVersion,
           branches: parsedBranches,
-          dryRun: !!options.dryRun,
+          dryRun: options.dryRun,
         });
 
         logger.info('done');

@@ -13,7 +13,7 @@ export default async function promoteAppVersion({
 }: {
   readonly remote: string;
   readonly branches: readonly string[];
-  readonly appVersion: string;
+  readonly appVersion?: string;
   readonly dryRun: boolean;
 }) {
   logger.info(`Git Reset Hard`.green);
@@ -23,28 +23,34 @@ export default async function promoteAppVersion({
     const currentBranch = branches[index];
     const firstBranch = index == 0;
 
-    logger.info(`Checkout ${currentBranch}`.green);
-    !dryRun && logger.debug(await git.checkout(`develop/${appVersion}`));
+    const branchAndVersion = joinBranchVersion(currentBranch, appVersion);
+    logger.info(`Checkout ${branchAndVersion}`.green);
+    !dryRun && logger.debug(await git.checkout(branchAndVersion));
 
-    logger.info(`Pull ${currentBranch}`);
+    logger.info(`Pull ${branchAndVersion}`);
     !dryRun && logger.debug(await git.pull());
 
     if (!firstBranch) {
       const previousBranch = branches[index - 1];
+      const previousBranchAndVersion = joinBranchVersion(
+        previousBranch,
+        appVersion
+      );
 
-      logger.info(`Merge ${previousBranch} in ${currentBranch}`.green);
+      logger.info(
+        `Merge ${previousBranchAndVersion} in ${branchAndVersion}`.green
+      );
       !dryRun &&
         logger.debug(
-          await git.merge([
-            `${previousBranch}/${appVersion}`,
-            '--commit',
-            '--no-edit',
-          ])
+          await git.merge([previousBranchAndVersion, '--commit', '--no-edit'])
         );
 
-      logger.info(`Push ${remote}`.green);
-      !dryRun &&
-        logger.debug(await git.push(remote, `${currentBranch}/${appVersion}`));
+      logger.info(`Push ${remote} ${branchAndVersion}`.green);
+      !dryRun && logger.debug(await git.push(remote, branchAndVersion));
     }
   }
+}
+
+function joinBranchVersion(branch: string, version: string) {
+  return [branch, version].filter(Boolean).join('/');
 }
