@@ -1,6 +1,6 @@
 {
   "name": "devops-helper",
-  "version": "0.0.1",
+  "version": "0.0.1-beta3",
   "description": "TBD",
   "repository": "https://github.com/imranMnts/devops-helper",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "devops-helper": "./build/cli.js"
   },
   "scripts": {
-    "prepublish": "yarn run build",
+    "prepublishOnly": "yarn run build",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:lint": "eslint src --ext .ts --fix",
