@@ -1,0 +1,8 @@
+node_modules/
+src/
+.eslintrc.json
+.gitignore
+.prettierignore
+APPVERSION.md
+README.md
+tsconfig.json
