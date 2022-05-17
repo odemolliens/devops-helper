@@ -12,15 +12,26 @@ For a list of available scripts and their usage run the command:
    \*BRANCHES parameters must be a valid JSON string array
 
    Example:
-   - Manual branch name:
+   - Auto detect version based on the branch name:
 
-   `npx --yes devops-helper promote-app https://gitlab-ci-token:ACCESS_TOKEN@gitlab.com/REPOSITORY "[\"develop\", \"uat\", \"lut\"]" 9.99.9`
-   - Auto detect version:
+   Your current branch is: `branch_1/1.2.3`
 
-   `npx --yes devops-helper promote-app https://gitlab-ci-token:ACCESS_TOKEN@gitlab.com/REPOSITORY "[\"develop\", \"uat\", \"lut\"]"`
+   `npx --yes devops-helper promote-app https://gitlab-ci-token:ACCESS_TOKEN@gitlab.com/REPOSITORY "[\"branch_1\", \"branch_2\", \"branch_3\"]"`
+
+   it will merge `branch_1/1.2.3` into `branch_2/1.2.3`, and `branch_2/1.2.3` into `branch_3/1.2.3`
+
+   - Manually set version:
+
+   `npx --yes devops-helper promote-app https://gitlab-ci-token:ACCESS_TOKEN@gitlab.com/REPOSITORY "[\"develop\", \"uat\", \"store\"]" 9.99.9`
+
+   It will merge `branch_1/9.99.9` into `branch_2/9.99.9`, and `branch_2/9.99.9` into `branch_3/9.99.9`
+
    - Without any versioned branches:
 
-   `npx --yes devops-helper promote-app https://gitlab-ci-token:ACCESS_TOKEN@gitlab.com/REPOSITORY "[\"develop\", \"uat\", \"lut\"]" --noVersionedBranch`
+   `npx --yes devops-helper promote-app https://gitlab-ci-token:ACCESS_TOKEN@gitlab.com/REPOSITORY "[\"branch_1\", \"branch_2\", \"branch_3\"]" --noVersionedBranch`
+
+   It will merge `branch_1` into `branch_2`, and `branch_2` into `branch_3`
+
 
 ⚠️ ⚠️ Don't forget to update `ACCESS_TOKEN` and `REPOSITORY`
 
