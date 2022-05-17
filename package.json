@@ -10,6 +10,7 @@
     "devops-helper": "./build/cli.js"
   },
   "scripts": {
+    "prepublish": "yarn run build",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"**/*.ts\" --write",
     "fix:lint": "eslint src --ext .ts --fix",
