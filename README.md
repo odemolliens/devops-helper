@@ -13,12 +13,18 @@ For a list of available scripts and their usage run the command:
 
    Example:
    - Manual branch name:
-   `npx --yes devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]" 9.99.9`
-   - Auto detect version:
-   `npx --yes devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]"`
-   - Without any versioned branches:
-   `npx --yes devops-helper promote-app repository.git "[\"develop\", \"uat\", \"lut\"]" --noVersionedBranch`
 
+   `npx --yes devops-helper promote-app https://gitlab-ci-token:ACCESS_TOKEN@gitlab.com/REPOSITORY "[\"develop\", \"uat\", \"lut\"]" 9.99.9`
+   - Auto detect version:
+
+   `npx --yes devops-helper promote-app https://gitlab-ci-token:ACCESS_TOKEN@gitlab.com/REPOSITORY "[\"develop\", \"uat\", \"lut\"]"`
+   - Without any versioned branches:
+
+   `npx --yes devops-helper promote-app https://gitlab-ci-token:ACCESS_TOKEN@gitlab.com/REPOSITORY "[\"develop\", \"uat\", \"lut\"]" --noVersionedBranch`
+
+⚠️ ⚠️ Don't forget to update `ACCESS_TOKEN` and `REPOSITORY`
+
+The `ACCESS_TOKEN` can be created from [there](https://gitlab.com/-/profile/personal_access_tokens), just the `write_repository` is required
 ## Add a new script
 
 1. Place the new script in the scripts folder
