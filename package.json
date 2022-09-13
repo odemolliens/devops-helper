@@ -1,6 +1,6 @@
 {
   "name": "devops-helper",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Tool to help devops to promote a branch",
   "repository": "https://github.com/imranMnts/devops-helper",
   "license": "MIT",
