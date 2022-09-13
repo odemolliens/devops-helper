@@ -24,6 +24,16 @@ export default async function promoteAppVersion({
     const firstBranch = index == 0;
 
     const branchAndVersion = joinBranchVersion(currentBranch, appVersion);
+
+    if (!firstBranch) {
+      logger.info(`Create new branch ${branchAndVersion}`.green);
+      try {
+        !dryRun && logger.debug(await git.branch([ '-c', branchAndVersion ]));
+      } catch (error) {
+        console.error("<<>> error: " + error)
+      }
+    }
+
     logger.info(`Checkout ${branchAndVersion}`.green);
     !dryRun && logger.debug(await git.checkout(branchAndVersion));
 
